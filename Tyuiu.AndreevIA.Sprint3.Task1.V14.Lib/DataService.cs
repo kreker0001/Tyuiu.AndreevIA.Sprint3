@@ -6,17 +6,14 @@ namespace Tyuiu.AndreevIA.Sprint3.Task1.V14.Lib
     {
         public double GetSumSeries(double value, int startValue, int stopValue)
         {
-            double sum = 0.0;
-            int k = startValue;
-
-            while (k <= stopValue)
+            double sum = 0;
+            int i = startValue;
+            while (i <= stopValue)
             {
-                sum += (Math.Pow(value, k) + 1.0 / (k + 1)) * Math.Cos(value);
-                k++;
+                sum += (Math.Pow(value, i) + (1 / (i + 1.0))) * Math.Cos(value);
+                i++;
             }
-
-            return Math.Round(sum, 3); 
+            return Math.Round(sum, 3);
         }
-
     }
 }
