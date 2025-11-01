@@ -30,17 +30,38 @@ class Program
         Console.WriteLine("***************************************************************************");
         Console.WriteLine("* ИСХОДНЫЕ ДАННЫЕ:                                                        *");
         Console.WriteLine("***************************************************************************");
-        Console.WriteLine("* Формула: F(x) = (5x + 2.5) / (sin(x) - 2) + 2                           *");
-        Console.WriteLine("* Начало диапазона: -5                                                    *");
-        Console.WriteLine("* Конец диапазона: 5                                                      *");
-        Console.WriteLine("* Шаг табулирования:1                                                     *");
+
+        int startValue = -5;
+        int stopValue = 5;
+
+        Console.WriteLine("Старт шага = " + startValue);
+        Console.WriteLine("Конец шага = " + stopValue);
+
+        int len = ds.GetMassFunction(startValue, stopValue).Length;
+
+        double[] valueArray;
+        valueArray = new double[len];
+
+        valueArray = ds.GetMassFunction(startValue, stopValue);
+
+
 
         Console.WriteLine("***************************************************************************");
         Console.WriteLine("* РЕЗУЛЬТАТ:                                                              *");
         Console.WriteLine("***************************************************************************");
 
-        double[] res = ds.GetMassFunction(-5, 5);
-        foreach (double x in res) Console.WriteLine(x);
+        Console.WriteLine("+----------+----------+");
+        Console.WriteLine("|    X     |    f(x)  |");
+        Console.WriteLine("+----------+----------+");
+
+        for (int i = 0; i <= len-1; i++)
+        {
+            Console.WriteLine("|{0,5:d}     |   {1,5:f2}  |", startValue, valueArray[i]);
+            startValue++;
+        }
+        Console.WriteLine("+----------+----------+");
+
+        
 
         Console.ReadKey();
     }
